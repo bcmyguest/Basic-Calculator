@@ -99,7 +99,7 @@ public class CalculatorModel {
     //     System.out.println("2 ** 0 = " + calcModel.exponentValues(value1, value2));
     // }
 
-    public double addValues(double value1, double value2) {
+    public double addValues(double value1, double value2) throws ArithmeticException {
 
         if(Double.isInfinite((value1 + value2))) {
             throw new ArithmeticException("double under/overflow");
@@ -109,13 +109,13 @@ public class CalculatorModel {
         
     }
 
-    public double subtractValues(double value1, double value2) {
+    public double subtractValues(double value1, double value2) throws ArithmeticException {
 
         return addValues(value1,-value2);
         
     }
 
-    public double multiplyValues(double value1, double value2) {
+    public double multiplyValues(double value1, double value2) throws ArithmeticException {
         if(Double.isInfinite((value1*value2))) {
             throw new ArithmeticException("double under/overflow");
         } else {
@@ -123,7 +123,7 @@ public class CalculatorModel {
         }
     }
 
-    public double divideValues(double value1, double value2) {
+    public double divideValues(double value1, double value2) throws ArithmeticException {
         if(value2 == 0) {
             throw new ArithmeticException("Cannot divide by zero");
         } else if(Double.isInfinite((value1/value2))) {
@@ -133,7 +133,7 @@ public class CalculatorModel {
         }
     }
 
-    public double exponentValues(double value1, double value2) {
+    public double exponentValues(double value1, double value2) throws ArithmeticException {
         if(Double.isInfinite((Math.pow(value1, value2)))) {
             throw new ArithmeticException("double under/overflow");
         } else {

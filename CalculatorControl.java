@@ -104,14 +104,18 @@ public class CalculatorControl {
                     System.out.println("value1: " + value1);
                     System.out.println("value2: " + value2);
                     System.out.println("expression: " + expression);
-                    if(expression.equals("") && !calcView.getTextField().equals("Welcome to the Calculator App")) {
+                    if(expression.equals("") && (!calcView.getTextField().equals("Welcome to the Calculator App") && !calcView.getTextField().equals("Error"))) {
                         value1 = Double.valueOf(calcView.getTextField());
+                    } else if (expression.equals("")){
+                        value1 = Double.valueOf(0);
                     } else { 
-                        if(!calcView.getTextField().equals("Welcome to the Calculator App") && calcView.getPostExpression()) {
+                        if((!calcView.getTextField().equals("Welcome to the Calculator App") && !calcView.getTextField().equals("Error")) && calcView.getPostExpression()) {
                             value2 = Double.valueOf(action);
-                        }  else if (!calcView.getTextField().equals("Welcome to the Calculator App") && !calcView.getPostExpression()) {
+                        }  else if ((!calcView.getTextField().equals("Welcome to the Calculator App") && !calcView.getTextField().equals("Error")) && !calcView.getPostExpression()) {
                             value2 = Double.valueOf(calcView.getTextField());
-                        }    
+                        }    else {
+                            value2 = Double.valueOf(0);
+                        }
                     }
                     if(action >= 0 && action <= 9) {
                         
@@ -162,20 +166,47 @@ public class CalculatorControl {
                         } else {
                             // now we have to do an operation
                             double result = 0;
+                            boolean err = false;
                             // each of these will need error checking
                             if (expression.equals("+")) {
-                                result = calcModel.addValues(value1, value2);
+                                try {
+                                    result = calcModel.addValues(value1, value2);
+                                } catch (ArithmeticException e) {
+                                    display = "Error";
+                                    err = true;
+                                }
+                                
                             } else if (expression.equals("-")) {
-                                result = calcModel.subtractValues(value1, value2);
+                                try {
+                                    result = calcModel.subtractValues(value1, value2);
+                                } catch (ArithmeticException e) {
+                                    display = "Error";
+                                    err = true;
+                                }
+                                
                             } else if (expression.equals("*")) {
-                                result = calcModel.multiplyValues(value1, value2);
+                                try {
+                                    result = calcModel.multiplyValues(value1, value2);
+                                } catch (ArithmeticException e) {
+                                    display = "Error";
+                                    err = true;
+                                }
+                                
                             } else if (expression.equals("/")) {
-                                result = calcModel.divideValues(value1, value2);
+                                try {
+                                    result = calcModel.divideValues(value1, value2);
+                                } catch (ArithmeticException e) {
+                                    display = "Error";
+                                    err = true;
+                                }
+                                
                             }
 
                             value1 = result;
                             value2 = Double.valueOf(0);
-                            display = Double.toString(result);
+                            if (!err) {
+                                display = Double.toString(result);
+                            }                            
                             calcView.setTextField(display);
                             expression = "";
                             display = "";
