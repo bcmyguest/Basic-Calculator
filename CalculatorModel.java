@@ -11,6 +11,10 @@ public class CalculatorModel {
         memory = new CustomLinkedList();
     }
 
+    public String viewNextNode() {
+        return memory.viewNextNode();
+    }
+
     public double getMaxValue() {
         return maxValue;
     }

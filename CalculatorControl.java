@@ -192,6 +192,12 @@ public class CalculatorControl {
                         } else {
                             // currently won't show memory on the screen
                             calcModel.printMemory();
+                            value1 = Double.valueOf(calcModel.viewNextNode());
+                            calcView.setTextField(Double.toString(value1));
+                            expression = "";
+                            display = "";
+                            value2 = Double.valueOf(0);
+
                         }
                     } else if (action == 11) {
                         // this might not be done correctly

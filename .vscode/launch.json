@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CalculatorControl",
+            "request": "launch",
+            "mainClass": "CalculatorControl"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CalculatorControl",
+            "request": "launch",
+            "mainClass": "CalculatorControl",
+            "projectName": "Basic-Calculator_d663b30e"
+        }
+    ]
+}

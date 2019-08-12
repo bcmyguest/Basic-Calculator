@@ -5,9 +5,11 @@ public class CustomLinkedList {
     }
 
     private Node head;
+    private Node curr;
 
     CustomLinkedList() {
         head = null;
+        curr = head;
     }
 
     // adds a node to the front of the list
@@ -17,6 +19,7 @@ public class CustomLinkedList {
             head = new Node();
             head.next = null;
             head.data = value;
+            curr = head;
         } else {
             Node newNode = new Node();
             newNode.data = value;
@@ -44,6 +47,21 @@ public class CustomLinkedList {
             res += strDouble;
         }
         System.out.println(res);
+    }
+
+    public String viewNextNode() {
+        String res = "";
+        if(head == null) {
+            res = "";
+        } else if (curr.next == null) {
+            res += curr.data;
+            curr = head;
+        } else {
+            res += curr.data;
+            curr = curr.next;
+        }
+
+        return res;
     }
 
 
