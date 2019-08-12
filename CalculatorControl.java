@@ -10,89 +10,26 @@ public class CalculatorControl {
         CalculatorModel calcModel = new CalculatorModel();
 
         System.out.println("Welcome to the calculator model");
-        System.out.println("Max Value (maxValue): " + calcModel.getMaxValue());
-    
-        System.out.println("Testing Addition function");
-        double value1 = Double.valueOf(1);
-        double value2 = Double.valueOf(-1);
-        System.out.println("1 + (-1) = " + calcModel.addValues(value1, value2));
-        value1 = Double.valueOf(1);
-        value2 = Double.valueOf(1);
-        System.out.println("1 + 1 = " + calcModel.addValues(value1, value2));
-        // not currently catching errors (this will be done in the control)
-        // value1 = Double.valueOf(calcModel.maxValue);
-        // value2 = Double.valueOf(calcModel.maxValue);
-        // System.out.println("maxValue + maxValue = " + calcModel.addValues(value1, value2));
-    
-        System.out.println("Testing Subtraction function");
-        value1 = Double.valueOf(1);
-        value2 = Double.valueOf(-1);
-        System.out.println("1 - (-1) = " + calcModel.subtractValues(value1, value2));
-        value1 = Double.valueOf(1);
-        value2 = Double.valueOf(1);
-        System.out.println("1 - 1 = " + calcModel.subtractValues(value1, value2));
-        value1 = Double.valueOf(calcModel.getMaxValue());
-        value2 = Double.valueOf(calcModel.getMaxValue());
-        System.out.println("maxValue - maxValue = " + calcModel.subtractValues(value1, value2));
-        // not currently catching errors (this will be done in the control)
-        // value1 = Double.valueOf(calcModel.maxValue);
-        // value2 = Double.valueOf(-calcModel.maxValue);
-        // System.out.println("maxValue - (-maxValue) = " + calcModel.subtractValues(value1, value2));
-    
-        System.out.println("Testing Multiplication function");
-        value1 = Double.valueOf(1);
-        value2 = Double.valueOf(-2);
-        System.out.println("1 * (-2) = " + calcModel.multiplyValues(value1, value2));
-        value1 = Double.valueOf(2);
-        value2 = Double.valueOf(2);
-        System.out.println("2 * 2 = " + calcModel.multiplyValues(value1, value2));
-        value1 = Double.valueOf(2);
-        value2 = Double.valueOf(0);
-        System.out.println("2 * 0 = " + calcModel.multiplyValues(value1, value2));
-    
-        System.out.println("Testing Division function");
-        value1 = Double.valueOf(1);
-        value2 = Double.valueOf(-2);
-        System.out.println("1 / (-2) = " + calcModel.divideValues(value1, value2));
-        value1 = Double.valueOf(2);
-        value2 = Double.valueOf(2);
-        System.out.println("2 / 2 = " + calcModel.divideValues(value1, value2));
-            // not currently catching errors (this will be done in the control)
-            // value1 = Double.valueOf(2);
-            // value2 = Double.valueOf(0);
-            // System.out.println("2 / 0 = " + calcModel.divideValues(value1, value2));
-    
-        System.out.println("Testing Exponent function");
-        value1 = Double.valueOf(1);
-        value2 = Double.valueOf(-2);
-        System.out.println("1 ** (-2) = " + calcModel.exponentValues(value1, value2));
-        value1 = Double.valueOf(2);
-        value2 = Double.valueOf(2);
-        System.out.println("2 ** 2 = " + calcModel.exponentValues(value1, value2));
-        value1 = Double.valueOf(2);
-        value2 = Double.valueOf(0);
-        System.out.println("2 ** 0 = " + calcModel.exponentValues(value1, value2));
 
-        System.out.println("Testing Memory Component");
-        calcModel.printMemory();
+        CalculatorView calcView = new CalculatorView();
+        System.out.println("Calc View is open");
+
         System.out.println("Adding Values to Mem (1.2, 69, 68)");
         calcModel.addToMemory(Double.valueOf(1.2));
         calcModel.addToMemory(Double.valueOf(69));
         calcModel.addToMemory(Double.valueOf(68));
-        calcModel.printMemory();
-        System.out.println("Removing last added value");
-        calcModel.removeLastMemory();
-        calcModel.printMemory();
 
-        value1 = Double.valueOf(0);
-        value2 = Double.valueOf(0);
+        this.calcLogic(calcModel, calcView);
+    }
+
+    private void calcLogic(CalculatorModel calcModel, CalculatorView calcView) {
+        
+        double value1 = Double.valueOf(0);
+        double value2 = Double.valueOf(0);
         String expression = "";
         String display = "";
         int action = -1;
-        CalculatorView calcView = new CalculatorView();
-        System.out.println("Calc View is open");
-        System.out.println(calcView.getAction());
-        System.out.println(calcView.closed);
+        
         while(calcView.closed == false) {
             // System.out.println(action);
             action = calcView.getAction();
@@ -259,18 +196,11 @@ public class CalculatorControl {
                 
             } 
             try{
-
                 Thread.sleep(500);
               }catch(InterruptedException ex){
-                //do stuff
+                // this is just to wait so meh
               }
-            // check if there was an action, if not, do nothing
-            // if there was an action
-                // check what the action was
-                // if the action is valid
-                // complete the action using the model
-                // update the screen
-                // ensure that the values in the control are correct
+
         }
     }
 
