@@ -31,16 +31,12 @@ public class CalculatorControl {
         int action = -1;
         
         while(calcView.closed == false) {
-            // System.out.println(action);
             action = calcView.getAction();
             if(action != -1) {
                 System.out.println(action);
                 // an action has occured
                 if(checkIfActionValid(action)) {
                     // get the current value
-                    System.out.println("value1: " + value1);
-                    System.out.println("value2: " + value2);
-                    System.out.println("expression: " + expression);
                     if(expression.equals("") && (!calcView.getTextField().equals("Welcome to the Calculator App") && !calcView.getTextField().equals("Error"))) {
                         value1 = Double.valueOf(calcView.getTextField());
                     } else if (expression.equals("")){
@@ -57,7 +53,6 @@ public class CalculatorControl {
                     if(action >= 0 && action <= 9) {
                         
                         if(expression.equals("")) {
-                            // System.out.println(Double.toString(value1) + Integer.toString(action));
                             if(Double.toString(value1).equals("0.0")){
                                 value1 = Double.valueOf(Integer.toString(action));
                             } else {
@@ -207,7 +202,6 @@ public class CalculatorControl {
     private boolean checkIfActionValid(int action) {
         return true;
     }
-
 
     public static void main(String arg[]) {
         CalculatorControl calcControl = new CalculatorControl();
